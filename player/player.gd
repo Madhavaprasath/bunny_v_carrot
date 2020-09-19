@@ -51,7 +51,9 @@ func _physics_process(_delta):
 	position.y = clamp(position.y, 12, screen_size.y - 20)
 
 
-func _input(event):
+func unhandled_key_input(event):
+	'''input is distributed in 3 ways input gui input and unhandled input so input is priority and followed by guiinput and unhandled input so when we are about to 
+	jump but you want to press esc so it pauses we have to give that priority to esc to first and then all those controls so unhandled input is useful :)'''
 	if state == State.INACTIVE or state == State.DASHING:
 		return
 	if event.is_action_pressed("ui_dash") and can_dash:
